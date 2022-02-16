@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="./login.css" />
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <link rel="icon" href="logo.png">
+  </link>
+
+ <link rel="icon" href="logo.png">
+    <title>Quiz_Hub</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="content">
+      <div class="logo ">
+        <img class="center logoimg" src="./logo.png" alt="logoPng"
+          style="border-radius: 12px; border: solid 3px rgba(255, 255, 255, 0.774); background-color: rgba(219, 202, 202, 0.068); width:50% ; margin-top: 25vh;  " />
+      </div>
+      <div class="image"></div>
+      <div class="text">
+        2021-2022 &copy;
+      </div>
+    </div>
+
+    <form id="form" method="post" action="Register.com"  onsubmit="return validateForm()"
+      style="border: solid 1px black; margin-left: 3px;margin-top: 4%;margin-bottom: 3%;margin-right: 3px">
+      <div class="social">
+        <div class="title">Register Here</div>
+        <div class="question">
+          as <select name="role">
+          <option value="std">Student</option>
+          <option value="fac">Faculty</option>
+           
+              </select> <br />
+
+        </div>
+
+        <!-- /** 
+          * ! user name Input here
+         **/ -->
+
+        <div>
+          <label for="name">User Name</label>
+          <i class="fas fa-user"></i>
+          <input title="Enter your username here" type="text" name="name" id="username"
+            placeholder="Your name here" />
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
+          <div class="error"></div>
+          <p id="userError" class="error"></p>
+
+        </div>
+
+        <!-- /** 
+          * ! Email Input here
+         **/ -->
+
+        <div>
+          <label for="email">Email</label>
+          <i class="far fa-envelope"></i>
+          <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
+          <div class="error"></div>
+          <p id="emailError" class="errorr"></p>
+        </div>
+        <!-- /** 
+          * ! Mobile Input here
+         **/ -->
+       
+
+        <!-- /** 
+          * ! Password Input here
+         **/ -->
+
+        <div>
+          <label for="password">Password</label>
+          <i class="fas fa-lock"></i>
+          <input title="Don't share your password with anyone" type="password" name="password" id="password"
+            placeholder="Password here" />
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
+          <div class="error"></div>
+          <p id="passError" class="errorr"></p>
+        </div>
+
+        <button type="submit" id="submit">Submit</button> 
+    </form>
+ <div style="padding: 20px"> Already Registered? <a href="login.html">Login Here</a></div>
+  </div>
+</body>
+<script src="/components/main.js"></script>
+
+</html>
+<script>
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let mobile = document.getElementById("mobileno");
+  let email = document.getElementById("email");
+
+  
+  function validateForm() {
+    if (username.value == "") {
+      document.getElementById("userError").innerHTML = "Username is empty";
+      return false;
+    } else if (username.value.length < 5) {
+      document.getElementById("userError").innerHTML =
+        "Minimum 5 char required";
+      return false;
+    } else {
+      document.getElementById("userError").innerHTML = "";
+    }
+    if (password.value == "") {
+      document.getElementById("passError").innerHTML = "Password is empty";
+      return false;
+    } else if (password.value.length < 5) {
+      document.getElementById("passError").innerHTML =
+        "Minimun 5 character required";
+     return false;
+    } else {
+      document.getElementById("password").innerHTML = "";
+    }
+    
+   if (email.value == "") {
+      document.getElementById("mobError").innerHTML = "email is empty";
+      return false;
+    } else if (mobile.value.length < 10) {
+      document.getElementById("mobError").innerHTML =
+        "Strictly 10 number required";
+      return false;
+    }
+    else {
+      document.getElementById("mobError").innerHTML = "";
+  }
+      return true;
+  }
+
+
+
+  let x = document.getElementById("username");
+  x.addEventListener("focus", myeventlist);
+  function myeventlist() {
+    x.style.backgroundColor = "lightgreen";
+  }
+  let y = document.getElementById("username");
+  y.addEventListener("blur", myevent3);
+  function myevent3() {
+    y.style.backgroundColor = "white";
+  }
+  let d = document.getElementById("username");
+  d.addEventListener("change", myevent1);
+  function myevent1() {
+    console.log(this.value);
+  }
+
+  let a = document.getElementById("password");
+  a.addEventListener("focus", myevent);
+  function myevent() {
+    a.style.backgroundColor = "lightgreen";
+  }
+  let b = document.getElementById("password");
+  b.addEventListener("blur", mypass);
+  function mypass() {
+    b.style.backgroundColor = "white";
+  }
+  let h = document.getElementById("password");
+  h.addEventListener("change", mypasss1);
+  function mypasss1() {
+    console.log(this.value);
+  }
+  let j = document.getElementById("mobileno");
+  j.addEventListener("focus", mypass1);
+  function mypass1() {
+    j.style.backgroundColor = "lightgreen";
+  }
+  let s = document.getElementById("mobileno");
+  s.addEventListener("blur", mypasss1);
+  function mypasss1() {
+    s.style.backgroundColor = "white";
+  }
+  let u = document.getElementById("mobileno");
+  u.addEventListener("change", mypasss123);
+  function mypasss123() {
+    console.log(this.value);
+  }
+  let l = document.getElementById("email");
+  l.addEventListener("focus", mypass);
+  function mypass() {
+    l.style.backgroundColor = "lightgreen";
+  }
+  let p = document.getElementById("email");
+  p.addEventListener("blur", mypasss);
+  function mypasss() {
+    p.style.backgroundColor = "white";
+  }
+  let o= document.getElementById("email");
+  o.addEventListener("change", mypasss12);
+  function mypasss12() {
+    console.log(this.value);
+  }
+</script>

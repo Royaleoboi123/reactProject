@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./login.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <link rel="icon" href="components/logo.png">
+  </link>
+  <link rel="icon" href="logo.png">
+    <title>Quiz_Hub</title>
+</head>
+<script type="text/javascript">
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function checkAlert()
+{
+	let par = getParameterByName("register");
+	let err = getParameterByName("error");
+	let logout = getParameterByName("logout");
+	let logerr= getParameterByName("logerr");
+
+	if(par=="yes")
+			{
+				alert("Registration successful");
+			}
+	
+	if(err=="1")
+			{
+				document.getElementById("err").innerHTML="Wrong credential please try again"
+			}
+	if(logout=="1")
+		{
+		alert("LoggedOut Successfully");
+		}	
+	if(logerr=="1")
+	{
+	alert("Please Login first");
+	}	
+}
+</script>
+
+
+<body onload="checkAlert()">
+  <div class="container">
+    <div class="content">
+      <div class="logo ">
+        <img class="center logoimg" src="./logo.png" alt="logoPng"
+          style="border-radius: 12px; border: solid 3px rgba(255, 255, 255, 0.774); background-color: rgba(219, 202, 202, 0.068); width:50% ; margin-top: 25vh;  " />
+      </div>
+      <div class="image"></div>
+      <div class="text">
+        2021-2022 &copy;
+      </div>
+    </div>
+
+    <form id="form" method="post" action="Login.com"  onsubmit=" return validateForm()"
+      style="border: solid 1px black; margin-left: 3px;margin-top: 4%;margin-bottom: 3%;margin-right: 3px">
+      <div class="social">
+        <div class="title">Login Here</div>
+        <div class="question">
+          as<span></i><select name="role">
+          <option value="std">Student</option>
+          <option value="fac">Faculty</option>
+           <!-- <option value="admin">Admin</option> -->
+              </select> <br />
+
+        </div>
+
+        <!-- /** 
+          * ! user name Input here
+         **/ -->
+
+        <div>
+          <label for="name">User Name</label>
+          <i class="fas fa-user"></i>
+          <input title="Enter your username here" type="text" name="name" id="username"
+            placeholder="Your name here" />
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
+          <div class="error"></div>
+          <p id="userError" class="error"></p>
+
+        </div>
+
+     
+        <div>
+          <label for="password">Password</label>
+          <i class="fas fa-lock"></i>
+          <input title="Don't share your password with anyone" type="password" name="password" id="password"
+            placeholder="Password here" />
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
+          <div class="error"></div>
+          <p id="passError" class="errorr"></p>
+        </div>
+
+        <button type="submit" id="submit">Submit</button> 
+        <div style="margin-top: 20px; text-align: center;">
+        <span id="err"><span></div>
+    </form>
+  <div style="padding-top: 20px">Not registered? <a href="index.html">Register Here</a></div>
+  </div>
+
+</body>
+<script src="/components/main.js"></script>
+
+</html>
+<script>
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+
+  let flag = 1;
+  function validateForm() {
+    if (username.value == "") {
+      document.getElementById("userError").innerHTML = "Username is empty";
+      flag = 0;
+    } else if (username.value.length < 2) {
+      document.getElementById("userError").innerHTML =
+        "Minimum 5 char required";
+      flag = 0;
+    } else {
+      document.getElementById("userError").innerHTML = "";
+      flag = 1;
+    }
+    if (password.value == "") {
+      document.getElementById("passError").innerHTML = "Password is empty";
+      flag = 0;
+    } else if (password.value.length < 2) {
+      document.getElementById("passError").innerHTML =
+        "Minimun 4 character required";
+        
+      flag = 0;
+    } else {
+      document.getElementById("password").innerHTML = "";
+      flag = 1;
+    }
+
+  if (flag) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+  let x = document.getElementById("username");
+  x.addEventListener("focus", myeventlist);
+  function myeventlist() {
+    x.style.backgroundColor = "lightgreen";
+  }
+  let y = document.getElementById("username");
+  y.addEventListener("blur", myevent3);
+  function myevent3() {
+    y.style.backgroundColor = "white";
+  }
+  let d = document.getElementById("username");
+  d.addEventListener("change", myevent1);
+  function myevent1() {
+    console.log(this.value);
+  }
+
+  let a = document.getElementById("password");
+  a.addEventListener("focus", myevent);
+  function myevent() {
+    a.style.backgroundColor = "lightgreen";
+  }
+  let b = document.getElementById("password");
+  b.addEventListener("blur", mypass);
+  function mypass() {
+    b.style.backgroundColor = "white";
+  }
+  let h = document.getElementById("password");
+  h.addEventListener("change", mypasss1);
+  function mypasss1() {
+    console.log(this.value);
+  }
+ 
+</script>
